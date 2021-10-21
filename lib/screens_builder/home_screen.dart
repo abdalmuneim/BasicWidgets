@@ -31,7 +31,7 @@ class _RecipeAppState extends State<RecipeApp> {
       body: SafeArea(
         child: ListView.builder(
           itemCount: _recipeData.length,
-          itemBuilder: (context, index) {
+          itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
               onTap: () {
                 Navigator.push(
