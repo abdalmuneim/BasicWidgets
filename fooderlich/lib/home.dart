@@ -8,8 +8,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   //TODO: Add state variables and functions
   int _selectedIndex = 0;
+
   final List<Widget> _pages = [
     // TODO: Replace with Card
     Container(color: Colors.red),
