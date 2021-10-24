@@ -21,7 +21,7 @@ class Card2 extends StatelessWidget {
           children: const [
             // TODO 1: add author information
             AuthorCard(
-              autorName: 'Mike Katz',
+              authorName: 'Mike Katz',
               title: 'Smoothie Connoisseur',
               imageProvider: AssetImage('assets/author_katz.jpeg'),
             ),

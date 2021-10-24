@@ -3,13 +3,13 @@ import 'package:fooderlich/circle_image.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
 
 class AuthorCard extends StatelessWidget {
-  final String autorName;
+  final String authorName;
   final String title;
   final ImageProvider imageProvider;
 
   const AuthorCard({
     Key? key,
-    required this.autorName,
+    required this.authorName,
     required this.title,
     required this.imageProvider,
   }) : super(key: key);
@@ -21,6 +21,7 @@ class AuthorCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Row(
         // TODO 3: add alignment
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
@@ -35,7 +36,7 @@ class AuthorCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    autorName,
+                    authorName,
                     style: FooderlichTheme.lightTextTheme.headline2,
                   ),
                   Text(
@@ -47,7 +48,20 @@ class AuthorCard extends StatelessWidget {
             ],
           ),
 
-        //  TODO: Add Icon
+          //  TODO: Add Icon Button
+          IconButton(
+            onPressed: () {
+              const snackBar = SnackBar(
+                content: Text('Favorite Pressed'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            },
+            icon: const Icon(
+              Icons.favorite_border,
+            ),
+            color: Colors.grey[400],
+            iconSize: 30,
+          ),
         ],
       ),
     );
