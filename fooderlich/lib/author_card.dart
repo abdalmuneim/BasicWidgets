@@ -66,7 +66,7 @@ class _AuthorCardState extends State<AuthorCard> {
                   : buildSnackBar(context, 'Removed from favorite');
               print(isFavorite);
             },
-            icon: Icon(isFavorite ? Icons.favorite_border : Icons.favorite),
+            icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
             color: Colors.grey[400],
             iconSize: 30,
           ),
