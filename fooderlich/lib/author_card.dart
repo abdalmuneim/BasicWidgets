@@ -8,7 +8,6 @@ class AuthorCard extends StatefulWidget {
   final ImageProvider imageProvider;
 
   const AuthorCard({
-
     Key? key,
     required this.authorName,
     required this.title,
@@ -20,7 +19,6 @@ class AuthorCard extends StatefulWidget {
 }
 
 class _AuthorCardState extends State<AuthorCard> {
-
   bool isFavorite = false;
 
   @override
@@ -60,16 +58,15 @@ class _AuthorCardState extends State<AuthorCard> {
           //  TODO: Add Icon Button
           IconButton(
             onPressed: () {
-              isFavorite == false
+              setState(() {
+                isFavorite = !isFavorite;
+              });
+              isFavorite
                   ? buildSnackBar(context, 'add to favorite')
                   : buildSnackBar(context, 'Removed from favorite');
-              setState(() {
-                isFavorite ? false : true;
-              });
+              print(isFavorite);
             },
-            icon: const Icon(
-              Icons.favorite_border,
-            ),
+            icon: Icon(isFavorite ? Icons.favorite_border : Icons.favorite),
             color: Colors.grey[400],
             iconSize: 30,
           ),
