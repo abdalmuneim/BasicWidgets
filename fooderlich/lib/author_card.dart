@@ -51,10 +51,9 @@ class AuthorCard extends StatelessWidget {
           //  TODO: Add Icon Button
           IconButton(
             onPressed: () {
-              const snackBar = SnackBar(
-                content: Text('Favorite Pressed'),
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              isFavorite == false
+                  ? buildSnackBar(context, 'add to favorite')
+                  : buildSnackBar(context, 'Removed from favorite');
             },
             icon: const Icon(
               Icons.favorite_border,
@@ -65,5 +64,14 @@ class AuthorCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool isFavorite = false;
+
+  buildSnackBar(BuildContext context, String title) {
+    var snackBar = SnackBar(
+      content: Text(title),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
