@@ -2,17 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:fooderlich/circle_image.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
 
-class AuthorCard extends StatelessWidget {
+class AuthorCard extends StatefulWidget {
   final String authorName;
   final String title;
   final ImageProvider imageProvider;
 
   const AuthorCard({
+
     Key? key,
     required this.authorName,
     required this.title,
     required this.imageProvider,
   }) : super(key: key);
+
+  @override
+  State<AuthorCard> createState() => _AuthorCardState();
+}
+
+class _AuthorCardState extends State<AuthorCard> {
+
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,7 @@ class AuthorCard extends StatelessWidget {
           Row(
             children: [
               CircleImage(
-                imageProvider: imageProvider,
+                imageProvider: widget.imageProvider,
                 imageRadius: 28,
               ),
               const SizedBox(
@@ -36,11 +45,11 @@ class AuthorCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    authorName,
+                    widget.authorName,
                     style: FooderlichTheme.lightTextTheme.headline2,
                   ),
                   Text(
-                    title,
+                    widget.title,
                     style: FooderlichTheme.lightTextTheme.headline3,
                   ),
                 ],
@@ -54,6 +63,9 @@ class AuthorCard extends StatelessWidget {
               isFavorite == false
                   ? buildSnackBar(context, 'add to favorite')
                   : buildSnackBar(context, 'Removed from favorite');
+              setState(() {
+                isFavorite ? false : true;
+              });
             },
             icon: const Icon(
               Icons.favorite_border,
@@ -65,8 +77,6 @@ class AuthorCard extends StatelessWidget {
       ),
     );
   }
-
-  bool isFavorite = false;
 
   buildSnackBar(BuildContext context, String title) {
     var snackBar = SnackBar(
