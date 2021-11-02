@@ -77,7 +77,7 @@ class _AuthorCardState extends State<AuthorCard> {
 
   buildSnackBar(BuildContext context, String title) {
     var snackBar = SnackBar(
-      duration: const Duration(milliseconds: 3000),
+      duration: const Duration(milliseconds: 300),
       content: Text(title),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
