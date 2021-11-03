@@ -67,7 +67,7 @@ class _AuthorCardState extends State<AuthorCard> {
               print(isFavorite);
             },
             icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-            color: Colors.grey[400],
+            color: Colors.red[400],
             iconSize: 30,
           ),
         ],
