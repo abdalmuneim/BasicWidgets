@@ -59,12 +59,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/Chocolate.jpg
-    - assets/Grilled.jpg
-    - assets/Pizza.jpg
-    - assets/Spaghetti.jpg
-    - assets/Taco.jpg
-    - assets/Tomato.jpg
+    - assets/
+    - assets/food_pics/
+    - assets/magazine_pics/
+    - assets/profile_pics/
+    - assets/sample_data/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
