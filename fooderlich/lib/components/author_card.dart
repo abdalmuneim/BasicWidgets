@@ -55,7 +55,6 @@ class _AuthorCardState extends State<AuthorCard> {
             ],
           ),
 
-          //  TODO: Add Icon Button
           IconButton(
             onPressed: () {
               setState(() {
