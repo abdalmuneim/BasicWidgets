@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fooderlich/api/mock_fooderlich_service.dart';
 
 class ExploreScreen extends StatelessWidget {
-  const ExploreScreen({Key? key}) : super(key: key);
+  ExploreScreen({Key? key}) : super(key: key);
 
-  final mockService = Mock
+  final mockService = MockFooderlichService();
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Center(child: Text('Explore Screen'));
   }
 }
