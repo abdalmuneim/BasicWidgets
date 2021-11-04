@@ -8,6 +8,10 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Explore Screen'));
+
+    // TODO 1: Add TodayRecipeListView FutureBuilder
+    return const Center(
+      child: Text('Explore Screen'),
+    );
   }
 }

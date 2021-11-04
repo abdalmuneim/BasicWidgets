@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/components/card1.dart';
-import 'package:fooderlich/components/card2.dart';
-import 'package:fooderlich/components/card3.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,14 +12,11 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    // TODO: Replace with Card
-    const Card1(),
-
-    // TODO: Replace with Card2
-    const Card2(),
-
-    // TODO: Replace with Card3
-    const Card3(),
+    // TODO: Replace with ExploreScreen
+    Container(color: Colors.white),
+    // TODO: Replace with RecipesScreen
+    Container(color: Colors.green),
+    Container(color: Colors.blue),
   ];
 
   void _onTapTapped(int index) {
@@ -42,23 +36,19 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
 
-      // TODO: Show selected tab
       body: _pages[_selectedIndex],
 
-      //   TODO: Add bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
-
-        // TODO: set selected tab bar
         currentIndex: _selectedIndex,
         onTap: _onTapTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.card_giftcard), label: 'Card'),
+              icon: Icon(Icons.explore), label: 'Explore'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.card_giftcard), label: 'Card2'),
+              icon: Icon(Icons.book), label: 'Recipes'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.card_giftcard), label: 'Card3'),
+              icon: Icon(Icons.list), label: 'To Buy'),
         ],
       ),
     );
