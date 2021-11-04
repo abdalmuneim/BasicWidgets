@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/components/author_card.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
+import 'package:fooderlich/models/explore_recipe.dart';
 
 class Card2 extends StatelessWidget {
-  const Card2({Key? key}) : super(key: key);
+  const Card2({Key? key, required this.recipe}) : super(key: key);
+  final ExploreRecipe recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -11,29 +13,26 @@ class Card2 extends StatelessWidget {
       child: Container(
         width: 350,
         height: 450,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/mag5.png'), fit: BoxFit.cover),
-          borderRadius: BorderRadius.all(
+              image: AssetImage(recipe.backgroundImage), fit: BoxFit.cover),
+          borderRadius: const BorderRadius.all(
             Radius.circular(10),
           ),
         ),
         child: Column(
           children: [
-            // TODO 1: add author information
-            const AuthorCard(
-              authorName: 'Mike Katz',
-              title: 'Smoothie Connoisseur',
-              imageProvider: AssetImage('assets/author_katz.jpeg'),
+            AuthorCard(
+              authorName: recipe.authorName,
+              title: recipe.role,
+              imageProvider: AssetImage(recipe.profileImage),
             ),
-
-            // TODO 4: add Positioned text
             Expanded(
               child: Stack(
                 children: [
                   Positioned(
                     child: Text(
-                      'Recipe',
+                      recipe.title,
                       style: FooderlichTheme.lightTextTheme.headline1,
                     ),
                     bottom: 16,
@@ -45,7 +44,7 @@ class Card2 extends StatelessWidget {
                     child: RotatedBox(
                       quarterTurns: 3,
                       child: Text(
-                        'Smoothies',
+                        recipe.subtitle,
                         style: FooderlichTheme.lightTextTheme.headline1,
                       ),
                     ),

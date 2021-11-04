@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens_builder/explore_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,12 +9,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  //TODO: Add state variables and functions
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
     // TODO: Replace with ExploreScreen
-    Container(color: Colors.white),
+    ExploreScreen(),
     // TODO: Replace with RecipesScreen
     Container(color: Colors.green),
     Container(color: Colors.blue),
@@ -35,20 +35,15 @@ class _HomeState extends State<Home> {
         ),
         centerTitle: true,
       ),
-
       body: _pages[_selectedIndex],
-
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         currentIndex: _selectedIndex,
         onTap: _onTapTapped,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.explore), label: 'Explore'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.book), label: 'Recipes'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.list), label: 'To Buy'),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Recipes'),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'To Buy'),
         ],
       ),
     );

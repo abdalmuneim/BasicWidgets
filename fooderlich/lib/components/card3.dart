@@ -1,32 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
+import 'package:fooderlich/models/explore_recipe.dart';
 
 class Card3 extends StatelessWidget {
-  const Card3({Key? key}) : super(key: key);
+  const Card3({
+    Key? key,
+    required this.recipe,
+  }) : super(key: key);
+  final ExploreRecipe recipe;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 350,
-        height: 450,
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/mag2.png'), fit: BoxFit.cover),
-          borderRadius: BorderRadius.all(
-            Radius.circular(16),
+              image: AssetImage(recipe.backgroundImage), fit: BoxFit.cover),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(10),
           ),
+        ),
+        constraints: const BoxConstraints.expand(
+          width: 350,
+          height: 450
         ),
         child: Stack(
           children: [
-            //   TODO 5: Add dark overlay BoxDecoration
             Container(
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.6),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
-            //   TODO 6: Add Container, Column, Icon and Text
             Container(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -38,7 +43,7 @@ class Card3 extends StatelessWidget {
                     size: 40,
                   ),
                   Text(
-                    'Recipe Trends',
+                    recipe.title,
                     style: FooderlichTheme.darkTextTheme.headline2,
                   ),
                   const SizedBox(
@@ -47,7 +52,6 @@ class Card3 extends StatelessWidget {
                 ],
               ),
             ),
-            //   TODO 7: Add Center widget with Chip widget children
             Center(
               child: Wrap(
                 alignment: WrapAlignment.start,
