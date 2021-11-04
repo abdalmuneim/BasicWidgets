@@ -93,9 +93,9 @@ class FooderlichTheme {
           (states) => Colors.white,
         ),
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme:const AppBarTheme(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.green[900],
+        backgroundColor: Colors.black54,
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,

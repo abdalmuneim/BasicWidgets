@@ -23,7 +23,7 @@ class Card3 extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.6),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(16),
               ),
             ),
             //   TODO 6: Add Container, Column, Icon and Text
