@@ -6,8 +6,8 @@ import '../models/models.dart';
 class MockFooderlichService {
   // Batch request that gets both today recipes and friend's feed
   Future<ExploreData> getExploreData() async {
-    final todayRecipes = await _getTodayRecipes();
-    final friendPosts = await _getFriendFeed();
+    final List<ExploreRecipe> todayRecipes = await _getTodayRecipes();
+    final List<Post> friendPosts = await _getFriendFeed();
 
     return ExploreData(todayRecipes, friendPosts);
   }
