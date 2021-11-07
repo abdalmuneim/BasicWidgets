@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/api/mock_fooderlich_service.dart';
-import 'package:fooderlich/components/components.dart';
-import 'package:fooderlich/models/explore_data.dart';
+import '../api/mock_fooderlich_service.dart';
+import '../components/components.dart';
+import '../models/explore_data.dart';
 
 class ExploreScreen extends StatelessWidget {
   ExploreScreen({Key? key}) : super(key: key);
@@ -22,11 +22,8 @@ class ExploreScreen extends StatelessWidget {
               children: [
                 TodayRecipeListView(recipes: recipes),
                 const SizedBox(height: 16),
-
-              //  TODO: Replace this with FriendPostListView
-                Container(height: 400,
-                color: Colors.green,
-                ),
+                FriendPostListView(
+                    friendPosts: snapshot.data?.friendPosts ?? []),
               ],
             );
           } else {
