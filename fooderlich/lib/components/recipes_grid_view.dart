@@ -12,9 +12,9 @@ class RecipesGridView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
       child: GridView.builder(
-        itemCount: recipes.length,
+          itemCount: recipes.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
+              crossAxisCount: 1),
           itemBuilder: (context, int index) {
             final simpleRecipes = recipes[index];
             return RecipeThumbnail(recipe: simpleRecipes);
