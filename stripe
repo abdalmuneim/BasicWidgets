@@ -1,0 +1,108 @@
+import 'package:flutter/material.dart';
+import 'package:stripe_payment/stripe_payment.dart';
+
+class PaymentPage extends StatefulWidget {
+  @override
+  _PaymentPageState createState() => _PaymentPageState();
+}
+
+class _PaymentPageState extends State<PaymentPage> {
+  String publishableKey = 'your_stripe_publishable_key'; // Replace with your actual publishable key
+  TextEditingController cardNumberController = TextEditingController();
+  TextEditingController expMonthController = TextEditingController();
+  TextEditingController expYearController = TextEditingController();
+  TextEditingController cvcController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    StripePayment.setOptions(
+      StripeOptions(
+        publishableKey: publishableKey,
+        merchantId: "Test",
+        androidPayMode: 'test',
+      ),
+    );
+  }
+
+  Future<void> _pay() async {
+    try {
+      // Create PaymentMethod
+      PaymentMethod paymentMethod = await StripePayment.createPaymentMethod(
+        PaymentMethodRequest(
+          card: CreditCard(
+            number: cardNumberController.text,
+            expMonth: int.parse(expMonthController.text),
+            expYear: int.parse(expYearController.text),
+            cvc: cvcController.text,
+          ),
+        ),
+      );
+
+      // Confirm PaymentIntent with PaymentMethod
+      PaymentIntentResult paymentIntentResult = await StripePayment.confirmPaymentIntent(
+        PaymentIntent(
+          clientSecret: 'your_payment_intent_client_secret', // Replace with your actual payment intent client secret
+          paymentMethodId: paymentMethod.id,
+        ),
+      );
+
+      if (paymentIntentResult.status == 'succeeded') {
+        // Payment successful
+        print('Payment successful');
+      } else {
+        // Payment failed
+        print('Payment failed: ${paymentIntentResult.status}');
+      }
+    } catch (error) {
+      // Handle errors
+      print('Error: $error');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Payment Page'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextField(
+              controller: cardNumberController,
+              decoration: InputDecoration(labelText: 'Card Number'),
+            ),
+            TextField(
+              controller: expMonthController,
+              decoration: InputDecoration(labelText: 'Expiry Month'),
+            ),
+            TextField(
+              controller: expYearController,
+              decoration: InputDecoration(labelText: 'Expiry Year'),
+            ),
+            TextField(
+              controller: cvcController,
+              decoration: InputDecoration(labelText: 'CVC'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () async {
+                await _pay();
+              },
+              child: Text('Pay Now'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: PaymentPage(),
+  ));
+}
